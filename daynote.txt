@@ -1,0 +1,96 @@
+[Daily notes]
+
+2021-02-06
+- Today I finally start this note.
+- I don't have clear idea what to write, and I am sure things will evolve.
+- I decided not to think about technology too much for this note. Once the content is generated, and if there is a growing need for technology, then I will think about how to adopt technology.
+- These days I have a concern that I don't do anything. I usually think unclearly and do not initiate any action. And, usually I compromise with current situation
+- I feel sorry about YA Kim on how I treated her, however I still feel this is the best way for all of us. 
+- Am I also doing good to JS Lee? Is she doing well? Should I talk to her upright?
+- Writing is fun
+- What should be my focus? What do I have to develop? 
+- Is my network too limited? Will there be really things that I can do only by myself? Should I reach out to others more actively?
+- Fear of left out: is this only for investment? Or for other areas as well?
+- Investment: how to double the assets? What are my investment preferences. Am I rational in approaching investment? What will be the proper principles.
+
+<> Daily conclusions/actions
+- Need to act. Do not think about the same topic over and over again. 
+- Be determined 
+- Keep good relationship with JSL, but terminate with YAK
+- Paint more drawings. Order more canvases and maybe more art supplies.
+- Draw 5th paining today
+- Think systematically about investment principles: this may evolve over time. Create a new section/file for this
+
+2021-02-07
+- I have reached to a thought that "not only stuffs but also thoughts have to
+  be cleaned up"
+- I have determined to do my best for KE / Need actions for (1) gifts, (2)
+  formal start, (3) valentine day prep - reservation, etc. 
+- Let's think about renting a shop, business plan, and budgeting
+- Making vim settings: set spell
+
+2021-02-09
+- Waiting for a downturn of a market is probably not a good idea: as nobody knows when it will come and it could come pretty late
+- Would portfolio strategy be better
+
+2021-03-01
+- I came back to this note in a month
+- Lots of things happened: 
+    (1) Regarding coin-investment and huge fluctuation in gain/loss: 
+        Bitcoin investment had reached to 0.2B KRW gain, but collapsed in almost in 24 hours. 
+        After that, market became so sluggish - I made lots of mistakes, so the return eventually went to negative. 
+        All expectations turn out to be wrong. Purchases on the spot almost always were wrong, and cancelled orders were almost always good. 
+        Almost extra moves I made turn out to be wrong.
+        However, purchasing at any time and holding seem beneficial in the long run.
+        In rapid drop / increase situation, it is hard to think rationally; greed and fear smear
+        * I have to codify my past/current decision rationals and their effects to apply to my future decisions
+        * Think about how to make this a sustainable investment/job that generates reasonable returns/Or is this by nature a one time thing for a high gain? 
+        * What will be my logic in making decisions: should I set target returns and buy/sell mechanically? - sounds not quite right...
+    (2) Stance changed to people around me
+        Many new people appeared
+        I have to maintain good relationships with gentleman-ship and have to make firm stances at times
+    (3) Thinking evolved that I have to engage more with JC
+        I may stay longer as the perspective on KDBL is not bad and I have to be responsible
+        Also, my current position toward/with KDBL is firm, which is a big advantage
+        Anyway, it is good to do my best 
+- Few initial thoughts regarding my coin-investments
+    Taking advantage of volatility is hard: it never (or not easily) reaches my resell target price
+    Alt coin strategy failed: alt coins move with Bitcoin anyway, Bitcoin appreciates fastest, and you never know which alt will win (and diversified investment always gives mediocre return)
+    There are so many indicators: you have to read the market through news, Elon Musk, coinmarketcap/premiums, and prices/quantities
+
+2021-03-03
+- Let's study path set-up in linux and virtualenv and sudo/account setting as well
+- Let's use virtualenv, otherwise it could be disaster later
+
+2021-03-07
+- A good feeling about life and style
+    Thom Brown is so pretty (in combination with Gucci sneakers) with white skin, slender legs, pretty face, and round head with long hair - reminds me of HY
+    Choose my style and keep working toward it - wear good ones and maintain style / neatness
+    Aim high / search diligently / move on with determination 
+    Consider SMART-LASIK (in the range of 250)
+- Investment related
+    Divided my assets into two categories: stock and coin
+        * stock: HMM - 300M KRW
+        * coin: BTC - 600M KRW
+    Principle driven management is required
+        * if fear or greed drive/motivates actions, such actions surely fail
+        * I have multiple experiences of such failures - have to learn from experience
+        * Do not let emotion replace logic, and in order for that use order reservations in coinone
+    I have to recall my rationales and feelings in order avoid the same mistakes
+        * first: 
+        * second: 
+        ... 
+    Should aware my risk taking is getting bigger and bold
+    After all, my adjustment decisions only reduced the number of BTCs I could've own if I just hold
+- Roadmap for my journey to achieve goals
+    1. Develop issuetracker in issuetracker.info
+    2. Manage account with issuetree.tracker@gmail.com
+    3. Write things 
+    4. Written things will be the source of video for Youtube: prepare for Youtube
+    5. Develop systems for autotrading: kiwoom and Coinone
+- Images for future
+    Have to make overwhelming amount of money
+    Have to be sustainable 
+    Have to interact with people online and/or offline
+    Engage with technology
+

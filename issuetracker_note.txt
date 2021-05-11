@@ -1,0 +1,229 @@
+[ISSUETRACKER REBUILD NOTE]
+
+- 2/13/2021, issuetracker.info registered at Route53 AWS ($12/yr, autorenewal)
+- AWS EC2 smallest ubuntu leased
+- Registered the domain name to EC2
+    Create an elastic IP address at EC2 (allociate and associate)
+    At hosted zones of Route 53, create a record for issuetracker.info that contains the elastic IP address 
+- Craeted a key pair for EC2: issuetracker_keypair.pem, gmailed to me
+- ssh -i issuetracker_keypair.pem ubuntu@issuetracker.info
+- ufw setting at EC2
+    sudo apt-get install ufw
+    sudo ufw default allow outgoing
+    sudo ufw default deny incoming
+    sudo ufw allow ssh
+    sudo ufw allow http/tcp
+    sudo ufw enable
+    sudo ufw status
+    (sudo ufw allow 8000 <-> sudo ufw delete allow 8000)
+- Modified security group for EC2 control console to include port 80 (http)
+- Apache2 setting at EC2
+    sudo apt-get install apache2
+    sudo vim /etc/apache2/sites-available/000-default.conf
+        ServerName issuetracker.info
+    sudo a2ensite 000-default.conf    
+    sudo service apache2 restart
+    sudo service apache2 reload
+    sudo systemctl reload apache2
+- HTTPS setup
+    sudo apt-get install snapd
+    sudo snap install core; sudo snap refresh core
+    sudo snap install --classic certbot
+    sudo ln -s /snap/bin/certbot /usr/bin/certbot
+    sudo certbot --apache
+    sudo certbot renew --dry-run
+    sudo apachectl configtest
+    sudo ufw allow https
+    sudo service apache2 restart
+    * add HTTPS to security group for EC2 to include port 443 (https)    
+    * CRON
+        sudo crontab -e
+        add:
+        30 4 1 * * sudo certbot renew --quiet # every month, 4:30AM, 1st day renew
+    (for django apache setting with https, refer to Corey MS's video on HTTPS)
+- Change timezone: sudo timedatectl set-timezone Asia/Seoul
+- Note: Linux terminal commands
+    ctrl l: clear
+    ctrl d: logout
+    ctrl a/e: move to fron/end
+    ctrl u/k: cut to/from
+    ctrl y: paste
+    ctrl w: cut left word
+    ctrl r: reverse history search
+    ctrl z/q: suspend/resume
+    ctrl b/f: back/forward a character
+    alt b/f: back/forward a word
+    rm -rf directory
+    grep -rnw '/path/to/' -e 'word_to_find': search exact text in the given dir and sub-dirs
+- Tips
+    .vimrc: a few good options (also make dir ~/.vimbackup for backup files and swap files)
+    .bashrc: especially history search
+    sudo apt install tree
+    sudo apt install dos2unix
+    scp -i issuetracker_keypair.pem 'origin files' ubuntu@issuetracker.info:~/
+    ssh pem key file has to have permission of 0400 from linux
+    scp -r option for copying a directory
+- Vim multi buffer editing
+    :buffers or :ls
+    :e <file> or :badd <file> or :n <file> | tab open :tabe <file>
+    :1,3bw or :bdelete 1 and :bdelete 3
+    :%bw close all 
+    :args <* wild card> open as indicated
+    :b1 :bn :bp or :bN
+    # + ctrl + ^ (normal mode)
+    :bd or :bdelete close current buffer
+- Vim registers
+    :reg
+    "" just yanked
+    "+ external
+    ctrl + r (insert mode)
+    ". last inserted text
+    "% current file path
+    ": most recently executed command
+    "# last edited file name
+    "= result of command, e.g., system('ls')
+- Vim search and replace
+    :<range>s/f/t/x, 
+    where range: none - current line, % - all lines, .,$ - to end
+    x: g - all, c - confirm
+    * / # whole word search forward / back
+    :noh - clearing current highlights
+- Vim movements and others
+    ctrl + up / down (35 lines)
+    ctrl + forward / back (70 lines)
+    gg / G
+    n + shift + Home / Middle / Last (n means n lines from..., H/M/L) 
+    zt / zz / zb: move current line to top / center / bottom of the screen
+    :!<shell command>
+    :pwd current working directory
+    :cd change directory
+    ctrl + o / i: retrace backward / forward 
+    n.: repeat last changes n times
+    0 / ^ / $: 
+    p / P / gp / gP
+    ctrl + [: esc
+    insert-mode: ctrl+w deletes a word before the cursor
+    :set spell (move to misspelled [s ]s) 
+    :set nospell
+- Vim marks 
+    mc: mark current position with mark in a...Z
+    'c: go to mark in current file
+    'C: go to mark in any file
+    '0..9: go to last exit position
+    '' / '" go to position before jump, at last edit
+    :marks
+- Python installation (python 3.7.9 installed)
+    sudo apt update
+    sudo apt install software-properties-common
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt install python3.7
+    sudo apt update
+    sudo apt install python3-pip
+    sudo apt install python3-django (sudo apt remove python3-django)
+    sudo pip3 install virtualenv
+- Linux $PATH, sudo, su, groups, and environment variables
+    echo $PATH
+    /etc/environment: saves initial $PATH (use less or more commands to check)
+    .bashrc or .bash_profile may customize $PATH 
+    path for sudo is defined in 
+        sudo vim /etc/sudoers
+        secure_path
+    sudo su: opens a sub-terminal with root
+    /etc/group: saves groups and associated users
+    (e.g., more /etc/group | grep ubuntu)
+    sudo only works for users in the group sudo
+    find /path option filename: find files
+        find . -type f -name *.txt
+        find . -type d -name note*
+- Bash settings in .bashrc and .bash_profile
+    export PATH=$PATH:. 
+        var_name=var_value, and then can access with $var_name
+        export command makes local variable to global variable
+        python program is located in /usr/bin (which python3.7)
+    [do not use this] alias python=python3.7 
+    * alias does not work with sudo, as alias only works when it is the first word of the command
+    * do not use alias for python name change
+    * virtualenv does not properly work under this alias 
+        - virtualenv copies python3.7 when creating a virtualenv(call it as 'venv'), and names it to 'python' not 'python3.7'
+        - python3.7 in venv invokes python outside of venv, which is not the intention of virtualenv
+        - it is not easy to detect since alias works only when it is the first word of the command line
+            which python: output the path to the python in venv
+            python manage.py: due to the alias it runs manage.py with python3.7 outside of venv
+            python --version: does not help as versions are the same between python in venv and python3.7 in system
+    new_command() { bash_command with arguments and/or lines of commands } 
+    * .bash_profile (or ~/.profile): runs once when logged in
+    * .bashrc: runs for each terminal
+- Virtualenv 
+    * note that virtualenv uses already system-installed python (which is the first one to be found in the system)
+        - python has to be pre-installed
+        - pip3 is required to install virtualenv itself, but pre-installed pip3 is not reused in a newly created virtualenv (call it as 'venv')
+    * you may specify a python version when creating a venv (with -p option) when there are multiple python versions installed
+    * since python is copied when creating a virtualenv, command "python" has to be used, not "python3.7" (python3.7 invokes python outside of venv)
+    * pip is newly installed, so the version may be different from the pre-installed pip. And, command "pip"=="pip3" in venv
+    * fresh created venv does not use any pre-installed package 
+    * to access previously installed packages, use sudo (e.g., sudo pip3 --version, sudo django-admin --version)
+    * however, do not use sudo under venv as it refers to different versions of software/packages 
+    virtualenv venv
+    source venv/bin/activate 
+    deactivate
+    pip freeze > requirements.txt 
+    (or, pip freeze --local: to only list-up locally-installed packages) 
+    pip install -r requirements.txt
+    (in .bashrc) venv(){ source ~/venv/bin/activate }: command "venv" to activate venv
+- Django set-up
+    under venv, use pip over apt (as apt may require sudo, which causes path conflict)
+    pip install django (or Django)
+    django-admin startproject issuetracker
+    python manage.py startapp blog
+- Deploying Django to AWS
+    sudo apt-get update && sudo apt-get upgrade
+    hostnamectl set-hostname django-server
+    vim /etc/hosts 
+        add (public IP address) django-server
+- Django settings.py
+    adjust allowed_hosts: '52.78.166.22', 'issuetracker.info'
+    use config_file (i.e., config.json) to put SECRET_KEY, EMAIL_USER, EMAIL_PASS (this is app password by Google)
+        be sure to follow syntax of json (e.g., double quotation and no comma at the last item)
+    adjust TIME_ZONE
+    add STATIC_ROOT, STATIC_URL, etc at the end of the settings.py
+    adjust INTALLED_APPS to include 'crispy_forms', 'taggit', etc
+- Apache setting for Django
+    (assuming apache2 is already installed)
+    sudo apt-get install libapache2-mod-wsgi-py3
+    sudo cp 000-default.conf django_project.conf
+    add code to django_project.conf (as recommneded in django doc):
+        Alias /static ....
+        <Directory ... 
+        </Directory>
+        WSGIScriptAlias / <path_to_wsgi.py>
+        WSGIDaemonProcess <app_name> python-path=<...> python-home=<...>
+        WSGIProcessGroup <app_name>
+    sudo a2ensite django_project.conf
+    sudo a2dissite 000-default.conf
+    granting access:
+        sudo chown :www-data issuetracker/db.sqlite3
+        sudo chmod 664 issuetracker/db.sqlite3
+        sudo chown :www-data issuetracker
+        sudo chmod 775 issuetracker
+        sudo chown -R :www-data issuetracker/media
+        sudo chmod -R 775 issuetracker/media
+    settings.py debug=False
+    sudo systemctl reload apache2
+    sudo service apache2 restart
+- HTTPS
+    open django_project.conf in apache2
+        uncomment server name issuetracker.info (if not already done)
+        temporary comment out WSGI lines 
+    sudo certbot --apache
+        this adds codes to django_project.conf
+        also creates django_project_le_ssl.conf, which has port 443 instead of 80
+        remove our own codes from django_project.conf, and leave what's automatically added
+        leave everything in django_project_le_ssl.conf and uncomment WSGI part
+    sudo apachectl configtest 
+    sudo ufw allow https 
+    sudo service apache2 restart
+    redirection
+        <head>
+            <meta http-equiv='refresh' content='0; URL=https://issuetracker.info'>
+        </head>
+
