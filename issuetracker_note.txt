@@ -202,6 +202,7 @@
     sudo a2dissite 000-default.conf
     granting access:
         sudo chown :www-data issuetracker/db.sqlite3
+        sudo chown ubuntu issuetracker/db.sqlite3
         sudo chmod 664 issuetracker/db.sqlite3
         sudo chown :www-data issuetracker
         sudo chmod 775 issuetracker
