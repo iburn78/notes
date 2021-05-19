@@ -187,6 +187,15 @@
     adjust TIME_ZONE
     add STATIC_ROOT, STATIC_URL, etc at the end of the settings.py
     adjust INTALLED_APPS to include 'crispy_forms', 'taggit', etc
+- Django migrations
+    Django migrations are for modifying database
+    each app's migrations folder must have __init__.py file which may be an empty file
+    python manage.py showmigrations, makemigratoins, migrate, insepctdb, flush ... etc 
+- Django admin for issuetracker
+    python manage.py createsuperuser 
+    admin has to approve users registered
+    create "Public users" group that has permissions related blog, taggit, users (may need to modify this later)
+    assign any new users in Public users group
 - Apache setting for Django
     (assuming apache2 is already installed)
     sudo apt-get install libapache2-mod-wsgi-py3
