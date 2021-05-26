@@ -135,6 +135,8 @@
     find /path option filename: find files
         find . -type f -name *.txt
         find . -type d -name note*
+    grep multiple strings
+        grep 'stringA\|stringB'
 - Bash settings in .bashrc and .bash_profile
     export PATH=$PATH:. 
         var_name=var_value, and then can access with $var_name
@@ -153,6 +155,10 @@
     new_command() { bash_command with arguments and/or lines of commands } 
     * .bash_profile (or ~/.profile): runs once when logged in
     * .bashrc: runs for each terminal
+- Shell script
+    create a file with *.sh
+    sudo chmod +x <filename>
+    start with #!/bin/sh
 - Virtualenv 
     * note that virtualenv uses already system-installed python (which is the first one to be found in the system)
         - python has to be pre-installed
