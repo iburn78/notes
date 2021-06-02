@@ -63,6 +63,8 @@
     scp -i issuetracker_keypair.pem 'origin files' ubuntu@issuetracker.info:~/
     ssh pem key file has to have permission of 0400 from linux
     scp -r option for copying a directory
+    tree -L 4 
+    tree -I <folder> to exclude that specific folder
 - Vim multi buffer editing
     :buffers or :ls
     :e <file> or :badd <file> or :n <file> | tab open :tabe <file>
@@ -72,6 +74,9 @@
     :b1 :bn :bp or :bN
     # + ctrl + ^ (normal mode)
     :bd or :bdelete close current buffer
+    moving between buffers ctrl+^ and #ctrl+^
+    multibuffer search :bufdo g/something to search/
+    :ls
 - Vim registers
     :reg
     "" just yanked
@@ -156,9 +161,10 @@
     * .bash_profile (or ~/.profile): runs once when logged in
     * .bashrc: runs for each terminal
 - Shell script
-    create a file with *.sh
+    create a file with *.sh (not a must)
     sudo chmod +x <filename>
     start with #!/bin/sh
+    execute with . or source or ./<scriptfile>
 - Virtualenv 
     * note that virtualenv uses already system-installed python (which is the first one to be found in the system)
         - python has to be pre-installed
