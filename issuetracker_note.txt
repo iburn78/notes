@@ -75,7 +75,7 @@
     :b1 :bn :bp or :bN
     # + ctrl + ^ (normal mode)
     :bd or :bdelete close current buffer
-    moving between buffers ctrl+^ and #ctrl+^
+    moving between buffers ctrl+^ and #ctrl+^ (depending on OS, ctrl+6 also works, but not always)
     multibuffer search :bufdo g/something to search/
     :ls
 - Vim registers
