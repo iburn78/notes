@@ -53,6 +53,7 @@
     ctrl z/q: suspend/resume
     ctrl b/f: back/forward a character
     alt b/f: back/forward a word
+    alt d: delete a word forward
     rm -rf directory
     grep -rnw '/path/to/' -e 'word_to_find': search exact text in the given dir and sub-dirs
 - Tips
