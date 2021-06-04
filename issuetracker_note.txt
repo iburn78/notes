@@ -110,6 +110,7 @@
     insert-mode: ctrl+w deletes a word before the cursor
     :set spell (move to misspelled [s ]s) 
     :set nospell
+    f F to the char, t T to before the char
 - Vim marks 
     mc: mark current position with mark in a...Z
     'c: go to mark in current file
