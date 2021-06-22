@@ -55,7 +55,12 @@
     alt b/f: back/forward a word
     alt d: delete a word forward
     rm -rf directory
-    grep -rnw '/path/to/' -e 'word_to_find': search exact text in the given dir and sub-dirs
+    grep -rnw '/path/to/' -e 'word_to_find' # search exact text in the given dir and sub-dirs
+        -r: recursive
+        -n: numbering 
+        -w: exact matching
+        -e: use pattern
+    grep -i "search text" . # case insensitive
 - Tips
     .vimrc: a few good options (also make dir ~/.vimbackup for backup files and swap files)
     .bashrc: especially history search
@@ -94,6 +99,7 @@
     x: g - all, c - confirm
     * / # whole word search forward / back
     :noh - clearing current highlights
+    /"search word"\c # for case insensitive seaerch in vim
 - Vim movements and others
     ctrl + up / down (35 lines)
     ctrl + forward / back (70 lines)
@@ -165,8 +171,19 @@
 - Shell script
     create a file with *.sh (not a must)
     sudo chmod +x <filename>
-    start with #!/bin/sh
+    start with #!/bin/sh (not a must)
     execute with . or source or ./<scriptfile>
+    respect space in shell script
+    gitacp(){
+        git add .
+        if [ '$1' == '' ]  
+        then 
+            git commit -m "wip"
+        else 
+            git commit -m '$1'
+        fi
+        git push
+    }
 - Virtualenv 
     * note that virtualenv uses already system-installed python (which is the first one to be found in the system)
         - python has to be pre-installed
@@ -205,6 +222,7 @@
     Django migrations are for modifying database
     each app's migrations folder must have __init__.py file which may be an empty file
     python manage.py showmigrations, makemigratoins, migrate, insepctdb, flush ... etc 
+    sometimes, you may have to delete 000*** files for clean migrations
 - Django admin for issuetracker
     python manage.py createsuperuser 
     admin has to approve users registered
