@@ -268,4 +268,10 @@
         <head>
             <meta http-equiv='refresh' content='0; URL=https://issuetracker.info'>
         </head>
-
+- Bootstrap theme and Node
+    follow documentation in themes.getbootstrap.com/guide
+    sudo apt install nodejs
+    sudo apt install npm
+    sudo apt install gulp
+    npm install gulp
+    
