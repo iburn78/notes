@@ -269,6 +269,6 @@
             <meta http-equiv='refresh' content='0; URL=https://issuetracker.info'>
         </head>
 - Django staticfiles
-    during development (e.g., debug = True) static files are served from each app's static directory by the 'runserver'
+    during development (debug = True) static files are served from each app's static directory by the 'runserver'
     other webservers such as apache will serve static files from STATIC_ROOT, so 'collectstatic' command has to be run
 
