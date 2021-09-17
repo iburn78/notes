@@ -268,10 +268,7 @@
         <head>
             <meta http-equiv='refresh' content='0; URL=https://issuetracker.info'>
         </head>
-- Bootstrap theme and Node
-    follow documentation in themes.getbootstrap.com/guide
-    sudo apt install nodejs
-    sudo apt install npm
-    sudo apt install gulp
-    npm install gulp
-    
+- Django staticfiles
+    during development (e.g., debug = True) static files are served from each app's static directory by the 'runserver'
+    other webservers such as apache will serve static files from STATIC_ROOT, so 'collectstatic' command has to be run
+
