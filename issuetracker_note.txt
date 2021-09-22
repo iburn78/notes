@@ -226,6 +226,7 @@
 - Django admin for issuetracker
     python manage.py createsuperuser 
     admin has to approve users registered
+    It seems that you don't need to add additional permissions to the newly added users
 - Apache setting for Django
     (assuming apache2 is already installed)
     sudo apt-get install libapache2-mod-wsgi-py3
