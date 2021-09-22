@@ -226,8 +226,6 @@
 - Django admin for issuetracker
     python manage.py createsuperuser 
     admin has to approve users registered
-    create "Public users" group that has permissions related blog, taggit, users (may need to modify this later)
-    assign any new users in Public users group
 - Apache setting for Django
     (assuming apache2 is already installed)
     sudo apt-get install libapache2-mod-wsgi-py3
@@ -271,4 +269,4 @@
 - Django staticfiles
     during development (debug = True) static files are served from each app's static directory by the 'runserver'
     other webservers such as apache will serve static files from STATIC_ROOT, so 'collectstatic' command has to be run
-
+    for media files which were not used with 'static' command in debug mode, MEDIA_URL and MEDIA_ROOT have to be explicitly added in urls.py (as already did)
