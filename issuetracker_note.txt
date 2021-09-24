@@ -271,3 +271,33 @@
     during development (debug = True) static files are served from each app's static directory by the 'runserver'
     other webservers such as apache will serve static files from STATIC_ROOT, so 'collectstatic' command has to be run
     for media files which were not used with 'static' command in debug mode, MEDIA_URL and MEDIA_ROOT have to be explicitly added in urls.py (as already did)
+- VSCode tips
+    Emmet: HTML template auto completion
+    Command Palette: Ctrl+Shift+P, F1
+    Quick Open: Ctrl+P
+    Settings: Ctrl+,
+    Toggle Sidebar: Ctrl+B
+    Toggle Terminal: Ctrl+`
+    Keyboard Shortcuts: Ctrl+K+S
+    Alt+up/down or Alt+shift+up/down: move or copy line(s)
+    Ctrl+enter: start next line
+- VSCode useful extensions
+    Material theme
+    Material icon theme
+    Prettier - Code Formatter
+     - ctrl + ,  for setting 
+       change format on savePrettier:Tab Width 2
+       JavaScript > Preferences: Quote Style -> single
+       TypeScript > Preferences: Quote Style -> single
+    bracket pair colorizer
+    Indent-rainbow
+    Auto rename tag
+     - settings> Editor:Linked Editing (on)
+    CSS PEEK
+     - ctrl + 'css' -> move to definition
+    HTML CSS SUPPORT
+    LIVE SERVER
+     - command palette> live server: Open with Live Server
+     - change default browser to Chrome
+    HTML to CSS autocompletion
+    Kite: smarter code completion using AI
