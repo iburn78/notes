@@ -301,3 +301,5 @@
      - change default browser to Chrome
     HTML to CSS autocompletion
     Kite: smarter code completion using AI
+- Django model query
+    Q objects are helpfull for complex queries because they can be combined using logical operators and(&), or(|), negation(~)
