@@ -118,6 +118,9 @@
     :set spell (move to misspelled [s ]s) 
     :set nospell
     f F to the char, t T to before the char
+    in .vimrc define 
+        command! W write
+        command! Q quit
 - Vim marks 
     mc: mark current position with mark in a...Z
     'c: go to mark in current file
