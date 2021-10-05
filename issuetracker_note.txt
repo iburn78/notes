@@ -301,5 +301,10 @@
      - change default browser to Chrome
     HTML to CSS autocompletion
     Kite: smarter code completion using AI
+<<<<<<< HEAD
     autopep8 (pip install not vscode extension) 
      - in order not to activate pep3, put comment at the end of the line : # nopep8
+=======
+- Django model query
+    Q objects are helpfull for complex queries because they can be combined using logical operators and(&), or(|), negation(~)
+>>>>>>> 49e69fb1835970b4f254203528cc4bf7bb40c761
