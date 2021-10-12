@@ -284,6 +284,7 @@
     Keyboard Shortcuts: Ctrl+K+S
     Alt+up/down or Alt+shift+up/down: move or copy line(s)
     Ctrl+enter: start next line
+    Ctrl+space: show autocompletion menus
 - VSCode useful extensions
     Material theme
     Material icon theme
@@ -299,10 +300,12 @@
     CSS PEEK
      - ctrl + 'css' -> move to definition
     HTML CSS SUPPORT
+     - lets CSS autocompletion in HTML
     LIVE SERVER
      - command palette> live server: Open with Live Server
      - change default browser to Chrome
     HTML to CSS autocompletion
+     - lets CSS autocompletion in CSS for tags already defined in HTML
     Kite: smarter code completion using AI
     autopep8 (pip install not vscode extension) 
      - in order not to activate pep3, put comment at the end of the line : # nopep8
