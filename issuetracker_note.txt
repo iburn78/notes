@@ -93,6 +93,7 @@
     ": most recently executed command
     "# last edited file name
     "= result of command, e.g., system('ls')
+    just yanked word/contents are stored in buffer 0 (useful when replacing words)
 - Vim search and replace
     :<range>s/f/t/x, 
     where range: none - current line, % - all lines, .,$ - to end
@@ -121,6 +122,7 @@
     in .vimrc define 
         command! W write
         command! Q quit
+    if ctrl-s freezes the vim terminal (in linux), ctrl-q can resume it
 - Vim marks 
     mc: mark current position with mark in a...Z
     'c: go to mark in current file
@@ -274,6 +276,7 @@
     during development (debug = True) static files are served from each app's static directory by the 'runserver'
     other webservers such as apache will serve static files from STATIC_ROOT, so 'collectstatic' command has to be run
     for media files which were not used with 'static' command in debug mode, MEDIA_URL and MEDIA_ROOT have to be explicitly added in urls.py (as already did)
+    (media files: user uploaded static files)
 - VSCode tips
     Emmet: HTML template auto completion
     Command Palette: Ctrl+Shift+P, F1
