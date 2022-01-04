@@ -123,6 +123,8 @@
         command! W write
         command! Q quit
     if ctrl-s freezes the vim terminal (in linux), ctrl-q can resume it
+    "0 will always have the content of the latest yank (and moves to 1, 2, ... )
+    t(x): stops just before x, f(x): stops at x, w: move to next word
 - Vim marks 
     mc: mark current position with mark in a...Z
     'c: go to mark in current file
