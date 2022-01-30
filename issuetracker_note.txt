@@ -101,6 +101,8 @@
     * / # whole word search forward / back
     :noh - clearing current highlights
     /"search word"\c # for case insensitive seaerch in vim
+    iw: innerword -> viw highlights current word, ciw changes current word, diw deletes current word
+    viwp: replace a word
 - Vim movements and others
     ctrl + up / down (35 lines)
     ctrl + forward / back (70 lines)
