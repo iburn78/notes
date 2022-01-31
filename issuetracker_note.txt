@@ -321,5 +321,9 @@
     model query: Q objects are helpful for complex queries because they can be combined using logical operators and(&), or(|), negation(~)
     model query: __icontains looks for words case-insensitive
     in django templates, 'with' could be used with 'block' to assign variables
+    Never user the built-in Django User model directly, even if the built-in Django User implementation fulfill all the requirements of your application.
+    * This is also the recommendation from official doc
+    * At least extend the AbstractUser model and switch the AUTH_USER_MODEL on your settings.
+
 
 
