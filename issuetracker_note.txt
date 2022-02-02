@@ -72,6 +72,8 @@
     tree -L 4 
     tree -I <folder> to exclude that specific folder
     using pipe with xargs: find -type d -name migrations | xargs ls -al
+    * find . -name migrations | xargs rm -r 
+    * Be careful and do not use with !(...) with xargs: find . -name migrations | xargs rm -r !('xx') -> will delete everything under . due to !('xx') 
     vim case insensitive search: put "\c' such as /\c<search word>
 - Vim multi buffer editing
     :buffers or :ls
