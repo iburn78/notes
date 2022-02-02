@@ -71,6 +71,7 @@
     scp -r option for copying a directory
     tree -L 4 
     tree -I <folder> to exclude that specific folder
+    using pipe with xargs: find -type d -name migrations | xargs ls -al
 - Vim multi buffer editing
     :buffers or :ls
     :e <file> or :badd <file> or :n <file> | tab open :tabe <file>
