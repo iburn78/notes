@@ -287,6 +287,7 @@
     for media files which were not used with 'static' command in debug mode, MEDIA_URL and MEDIA_ROOT have to be explicitly added in urls.py (as already did)
     (media files: user uploaded static files)
     STATIC_ROOT is for collectstatic / STATICFILES_DIRS is where to find static files to collect / it might be better to use each app's own static file folder while development
+    to refresh CSS in Chrome, try ctrl+f5
 - VSCode tips
     Emmet: HTML template auto completion
     Command Palette: Ctrl+Shift+P, F1
