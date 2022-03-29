@@ -311,6 +311,7 @@
     Indent-rainbow
     Auto rename tag
      - settings> Editor:Linked Editing (on)
+     - do not use this... will cause bugs/confusion
     CSS PEEK
      - ctrl + 'css' -> move to definition
     HTML CSS SUPPORT
@@ -321,8 +322,10 @@
     HTML to CSS autocompletion
      - lets CSS autocompletion in CSS for tags already defined in HTML
     Kite: smarter code completion using AI
+     - but seems heavy: reconsider
     autopep8 (pip install not vscode extension) 
-     - in order not to activate pep3, put comment at the end of the line : # nopep8
+     - might be helpful in adjusting/improving code style in python
+     - in order not to activate, put comment at the end of the line : # nopep8
 - Django tips
     model query: Q objects are helpful for complex queries because they can be combined using logical operators and(&), or(|), negation(~)
     model query: __icontains looks for words case-insensitive
