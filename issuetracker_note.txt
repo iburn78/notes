@@ -310,8 +310,8 @@
     bracket pair colorizer
     Indent-rainbow
     Auto rename tag
-     - settings> Editor:Linked Editing (on)
      - do not use this... will cause bugs/confusion
+     - settings> Editor:Linked Editing (on) -> do not use this as well
     CSS PEEK
      - ctrl + 'css' -> move to definition
     HTML CSS SUPPORT
