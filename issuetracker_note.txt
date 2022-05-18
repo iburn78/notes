@@ -344,6 +344,29 @@
     sudo a2dissite django_project-le-ssl.conf, or sudo a2dissite exercise05-le-ssl.conf, etc
     sudo systemctl reload apache2
     python manage.py runserver 0.0.0.0:8010 (port)
+- X-sendfile
+    may consider implementing this in aws, as it is more efficient in serving large files, when traffic increases
+- Steps in django reset
+    delete db (sqlite)
+    create a new db (through manage.py)
+    give permissions to the db (e.g., chmod 664, chown :www-data)
+    clear migration directories except __init__.py
+    clear media content (except default contents)
+    clear and create exception_log.txt in etc directory with permission (e.g., chmod 664, chown :www-data)    
+    (or you can remove model instances through shell: Post, Card, User not to delete the db itself)
+- Steps in django git-transfer between local and remote
+    makemigrations / migrate / collectstatic in local
+    gacp / git stash / gpr / git pull 
+    makemigrations / migrate / collectstatic in remote
+- Permissions in django/aws
+    file: only group permission needs to be given / read and write rights need to be given (664)
+    directory: both user and group permissions need to be given / execution right needs to be given (775)
 
+
+    
+
+    make new superuser
+    
+ 
   
 
