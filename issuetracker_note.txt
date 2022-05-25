@@ -265,6 +265,7 @@
     settings.py debug=False
     sudo systemctl reload apache2
     sudo service apache2 restart
+    for print-outs in django -> look up in /var/log/apache2/error.log (as defined in apache config)
 - HTTPS
     open django_project.conf in apache2
         uncomment server name issuetracker.info (if not already done)
@@ -362,11 +363,4 @@
     file: only group permission needs to be given / read and write rights need to be given (664)
     directory: both user and group permissions need to be given / execution right needs to be given (775)
 
-
-    
-
-    make new superuser
-    
- 
-  
 
