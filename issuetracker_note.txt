@@ -337,6 +337,7 @@
     ccbv.co.uk: view hierachy 
     Form classes are to match HTML, while Model classes are to match DB
     * in between there is ModelForm classes used with Meta, and there are some variations such as UserCreationFrom which is a ModelForm (used with Meta)
+    django shell MODEL.objects.all().delete() -> does not properly delete the objects (i.e., does not call delete())
 - Python tips
     The __init__.py file indicates that the files in a folder are part of a Python package. 
     * Without an __init__.py file, you cannot import files from another directory in a Python project.
