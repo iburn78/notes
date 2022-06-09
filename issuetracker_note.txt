@@ -364,5 +364,11 @@
 - Permissions in django/aws
     file: only group permission (:www-data) needs to be given / read and write rights need to be given (664)
     directory: both user and group permissions (www-data, :www-data) need to be given / execution right needs to be given (775)
-
+- Bootstrap tips
+    float-end -> itself
+    justify, align -> items inside
+    put m-0 in row, and p-0 in col and container
+        <div class="container-fluid p-0">
+        <div class="row m-0">
+        <div class="col p-0">
 
