@@ -132,6 +132,12 @@
     "0 will always have the content of the latest yank (and moves to 1, 2, ... )
     t(x): stops just before x, f(x): stops at x, w: move to next word
     daw: delete a word vs dw, db
+    d/y/c it - in tag, at - at tag
+       iw - in word, aw - a word 
+       ip - in paragraph, ap - a paragraph
+       is - in sentence, as - a sentence
+       i" - in "", a" - a ""
+       i[, i(, a[, a( etc...
 - Vim marks 
     mc: mark current position with mark in a...Z
     'c: go to mark in current file
