@@ -354,6 +354,10 @@
     sudo a2dissite django_project-le-ssl.conf, or sudo a2dissite exercise05-le-ssl.conf, etc
     sudo systemctl reload apache2
     python manage.py runserver 0.0.0.0:8010 (port)
+- Change error logging level in apache2: 
+    cd /etc/apache2/
+    sudo vim apache2.conf
+    edit: LogLevel info 
 - Large file upload issue (not solved yet....):
     may need to add the following in apache2 conf file 
         WSGIApplicationGroup %{GLOBAL}
