@@ -651,4 +651,5 @@
         </script>
         {% endblock javascript %}
         # in django templates, multiple include is possible {% block 'name' %} {% endblock 'name %} in a html document
-
+- decision to transition from Pillow to OpenCV...
+   python / django / apache / wsgi keep spitting out error messages: Truncated or oversized header ....
