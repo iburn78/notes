@@ -651,5 +651,15 @@
         </script>
         {% endblock javascript %}
         # in django templates, multiple include is possible {% block 'name' %} {% endblock 'name %} in a html document
-- decision to transition from Pillow to OpenCV...
+- decision to transition from Pillow to OpenCV... -> reverted to Pillow
    python / django / apache / wsgi keep spitting out error messages: Truncated or oversized header ....
+   **** OpenCV is powerful and faster tool to manage images, but takes much more memory in system.
+- linux OOM Killer kills processes if memory usage increases...
+   error message "Truncated...." is due to the killed process by the OOM Killer
+   command: 
+   journalctl --list-boots | awk '{ print $1 }' | xargs -I{} journalctl --utc --no-pager -b {} -kqg 'killed process' -o verbose --output-fields=MESSAGE
+   will generate the processes killed by the OOM Killer
+
+
+
+
