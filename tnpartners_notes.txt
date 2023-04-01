@@ -1,0 +1,93 @@
+[TNPARTNERS BUILD NOTE]
+
+- 3/16/2023, tnpartners.net registered at Route53 per year ($11/yr, autorenewal)
+- AWS EC2 t2.nano ubuntu leased 
+- Registered the domain name to EC2
+    Create an elastic IP address at EC2 (allociate and associate)
+    At hosted zones of Route 53, create a record for issuetracker.info that contains the elastic IP address
+- Created a key pair for EC2: tnpartners.net, gmailed to me
+- ssh -i tnpartners_keypair.pem ubuntu@tnpartners.net
+- Allow http/https/ssh traffic in EC2 Security control panel (it could be already done, if you checed options when creating EC2)
+- Change timezone: sudo timedatectl set-timezone Asia/Seoul
+- sudo apt update / upgrade sudo apt-get update / upgrade
+- ufw setting at EC2
+    sudo apt-get install ufw
+    sudo ufw default allow outgoing
+    sudo ufw default deny incoming
+    sudo ufw allow ssh
+    sudo ufw allow http/tcp
+    sudo ufw allow https
+    sudo ufw enable
+    sudo ufw status
+    (sudo ufw allow 8000 <-> sudo ufw delete allow 8000)
+- Apache2 setting at EC2
+    sudo apt-get install apache2
+    sudo vim /etc/apache2/sites-available/000-default.conf                                                                                        ServerName issuetracker.info (uncomment the line)
+    sudo a2ensite 000-default.conf
+    sudo service apache2 restart
+    sudo service apache2 reload (probably the same command)
+    sudo systemctl reload apache2 (probably the same command)
+- HTTPS setup
+    sudo apt-get install snapd
+    sudo snap install core; sudo snap refresh core
+    sudo snap install --classic certbot
+    sudo ln -s /snap/bin/certbot /usr/bin/certbot
+    sudo certbot --apache
+    sudo certbot renew --dry-run
+    sudo apachectl configtest
+    sudo ufw allow https (done in above)
+    sudo service apache2 restart
+    * add HTTPS to security group for EC2 to include port 443 (https, done in above)
+    * CRON
+        sudo crontab -e
+        add:
+        30 4 1 * * sudo certbot renew --quiet # every month, 4:30AM, 1st day renew
+	sudo crontab -l (shows the cron list)
+	sudo crontab -e are scheduled with root's credentials while crontab -e are scheduled with logged-in user
+    (for django apache setting with https, see below)
+- .bashrc / .vimrc (copied from issuetracker.info)
+- hostnamectl / sudo hostname tnpartners-net
+- installed dos2unix
+- Python and virenv installation
+    Python already installed 
+    virtualenv installation: sudo apt install python3-virtualenv
+    venv activated in .bashrc
+    in venv, python3 -> python, pip3 -> pip
+- Django intalled in venv: pip install django
+    sudo apt-get update && sudo apt-get upgrade
+    vim /etc/hosts
+        add (public IP address 3.36.205.76) tnpartners-net 
+- Git setup
+    venv
+    create a repo in github
+    add a .gitignore in the repo
+    create a personal access token from github website (allow all rights, and no expiration)
+    create a django project
+        django-admin startproject tnp
+    git config --global user.email andy.chiwon.kim@gmail.com
+    git config --global user.name andy (does not need to be github id)
+    git config --global alias.graph "log --graph --oneline --decorate=short"
+    in tnp directory...
+        git init
+        git branch -m master main 
+            change branch name from master to main, or just created repo: git branch -m main
+            set the name the same as gitbub repo branch name and local branch name: either main or master
+        git remote add origin https://github.com/iburn78/tnp
+        git config credential.helper store
+        git pull origin main
+            use id with github id / password with personal access token just created 
+        git add -A / git commit -m "initial commit"
+        git push --set-upstream origin main
+
+
+
+- Django settings.py
+    adjust allowed_hosts: 'localhost', '3.36.205.76', 'tnpartners.net'
+    adjust TIME_ZONE
+    create superuser
+
+[to be done]
+- git related --- need to make repository
+- use config_file (i.e., config.json) to put SECRET_KEY, EMAIL_USER, EMAIL_PASS (this is app password by Google)
+        be sure to follow syntax of json (e.g., double quotation and no comma at the last item)
+- add STATIC_ROOT, STATIC_URL, etc at the end of the settings.py
