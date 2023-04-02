@@ -87,6 +87,8 @@
     add static / media settings
     migrate / create superuser
 - Apache2 setup for Django
+   sudo service apache2 reload / restart
+   sudo systemctl restart/reload apache2
    sudo apt-get install libapache2-mod-wsgi-py3
    cd /etc/apache2/sites-available
    cp conf files to tnp conf files (to have backups)
