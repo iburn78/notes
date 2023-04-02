@@ -7,6 +7,7 @@
     At hosted zones of Route 53, create a record for issuetracker.info that contains the elastic IP address
 - Created a key pair for EC2: tnpartners.net, gmailed to me
 - ssh -i tnpartners_keypair.pem ubuntu@tnpartners.net
+- scp -i tnpartners_keypair.pem (file) ubuntu@tnpartners.net:~/(file)
 - Allow http/https/ssh traffic in EC2 Security control panel (it could be already done, if you checed options when creating EC2)
 - Change timezone: sudo timedatectl set-timezone Asia/Seoul
 - sudo apt update / upgrade sudo apt-get update / upgrade
@@ -112,5 +113,15 @@
    sudo a2dissite 000-default.conf, 000-default-le-ssl.conf
    sudo a2ensite tnp.conf, tnp-le-ssl.conf
    sudo systemctl reload apache2
+   sudo apachectl configtest (to check syntax)
+   error log: lookup in /var/log/apache2/error.log
+   access granting
+       sudo chown :www-data tnp/db.sqlite3
+       sudo chown ubuntu tnp/db.sqlite3
+       sudo chmod 664 tnp/db.sqlite3
+       sudo chown :www-data tnp
+       sudo chmod 775 tnp
+       sudo chown -R :www-data tnp/media
+       sudo chmod -R 775 tnp/media
 
 [to be done]
