@@ -125,5 +125,10 @@
        sudo chmod 775 tnp
        sudo chown -R :www-data tnp/media
        sudo chmod -R 775 tnp/media
+--------------------------------------------------------
+- IMPORTANT: Python 3.10 does not work with mod-wsgi... => should not use Django probably
+- Below, convert to use NodeJS/Express
+--------------------------------------------------------
+
 
 [to be done]
