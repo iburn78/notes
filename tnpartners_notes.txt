@@ -89,6 +89,8 @@
 - Apache2 setup for Django
    sudo service apache2 reload / restart
    sudo systemctl restart/reload apache2
+   sudo systemctl status apache2.service
+   sudo service apache2 stop
    sudo apt-get install libapache2-mod-wsgi-py3
    cd /etc/apache2/sites-available
    cp conf files to tnp conf files (to have backups)
@@ -127,8 +129,6 @@
        sudo chmod -R 775 tnp/media
 --------------------------------------------------------
 - IMPORTANT: Python 3.10 does not work with mod-wsgi... => should not use Django probably
-- Below, convert to use NodeJS/Express
+- Below, convert to use NodeJS/Express / stop using apache2 and Django
 --------------------------------------------------------
 
-
-[to be done]
