@@ -362,3 +362,5 @@ db.all(sql, [], (err, rows) => {
     })
 })
 ####
+- refer to video: https://www.youtube.com/watch?v=mnH_1YGR2PM
+  for EXPRESS and SQLITE3
