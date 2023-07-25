@@ -175,4 +175,142 @@ app.get("*", (req, res) => {
     refer to pm2 quick start guide in the web
         
 
+#### notes on Express basics ###
+
+- initial set-up
+    npm init -y
+    npm i express
+- nodemon
+    npm i --save-dev nodemon
+    add to package.json
+      "scripts": {
+        "devStart": "nodemon server.js"
+      },
+    npm run devStart // to execute nodemon
+- res commands
+    res.send('data')
+    res.sendStatus(500)
+    res.status(500).send('data')
+    res.json({ some json })
+    res.download('server.js')
+    res.render(...): see below
+- view engine for nodejs ejs
+    npm i ejs 
+    vscode install extension 'EJS language support'
+    add in server.js (top file)
+      app.set("view engine", "ejs")
+      res.render("index", { data: "some data"})
+    make 'views' directory and locate ejs files in there (which are html files)
+    can be accessed in ejs like
+      <%= data %>
+      <%= locals.data || "alternative data if 'data' is not defined" %>
+- router
+    make 'routes' directory and locate for example users.js
+    in users.js
+      const express = require('express')
+      const router = express.Router()
+      
+      router.get('/', (req, res) => {
+        res.send('user list')
+      })
+      
+      router.post('/', (req, res) => {
+        res.send('craete a user')
+      })
+
+      router.get('/new', (req, res) => {
+        res.send('user new form')
+      })
+
+      router.get("/:id", (req, res) => {
+        res.send(`get user with ID ${req.params.id}`)
+      })
+
+      module.exports = router
+    
+    in server.js
+      const userRouter = require('./routes/users')
+      app.use('/users', userRouter)
+    
+    note 
+      :id is a variable 
+      can be accessed with ${req.params.id}
+    
+    simplification
+      router.get("/:id", (req, res) => {
+        res.send('')
+      })
+      router.put("/:id", (req, res) => {
+        res.send('')
+      })
+      router.delete("/:id", (req, res) => {
+        res.send('')
+      })
+      
+      is the same as 
+
+      router
+        .route("/:id")
+        .get((req, res) => {
+          res.send('')
+        })
+        .put((req,res) => {
+          res.send('')
+        })
+        .delete((req,res) => {
+          res.send('')
+        })
+
+- middlewares: runs between the starting of a request and the ending 
+    the followig code runs when routner executes with parameter 'id' in it
+      router.param("id", (req, res, next, id) => {
+        console.log(id) // do something in the middle
+        next() // as this is middleware, next() has to be executed to continue
+               // this runs before the get, put, delete router functions
+      })
+    middleware is useful for logging
+      app.user(logger) // location of this code is important as the code is excuted top to bottom
+      function logger(req,res,next){
+        console.log(req.originalUrl)
+        next()
+      }
+      logger can be merged to specific router as:
+        app.get("/", logger, (req, res) => {...})
+      you can also define the logger in the users.js 
+        define function in users.js
+        register it with: 
+          router.use(logger) // every single router in users will use this logger
+
+- serving static files
+    make 'public' directory (conventional naming)
+    add to server.js 
+      app.use(express.static("public"))
+    css or javascript files will go in there...
+
+- handling POST
+    add the following middleware in server.js to capture information coming from forms in POST request
+      app.use(express.urlencoded({ extended: true }))
+    render a form page that contains for example: 
+      <form action="/users" method="POST">
+        <label for=""> First Name
+          <input type="text" name="firstName" value="<%= locals.firstName %>" />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    the following code can access the form data in users.js
+      router.post('/', (req, res) => {
+        console.log(req.body.firstName)
+        res.send('Hi')
+      })
+
+- handling JSON
+    add the following middleware in server.js to let the server read json file from the client
+      app.use(express.json())
+   
+- getting query string information
+      url/?name=John 
+  can be accessed 
+      req.query.name
+    
+    
 
