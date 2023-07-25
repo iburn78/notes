@@ -129,6 +129,50 @@
        sudo chmod -R 775 tnp/media
 --------------------------------------------------------
 - IMPORTANT: Python 3.10 does not work with mod-wsgi... => should not use Django probably
-- Below, convert to use NodeJS/Express / stop using apache2 and Django
+- Below, converted to use NodeJS/Express / stop using apache2 and Django
+- Removed venv... (virtualenv)
 --------------------------------------------------------
+    
+- on Node.js
+    npm init (-y)
+    npm install express: install express for the package
+    setting up http and https / should run with "sudo node index.js"
+    index.js is like:
+
+####
+const express = require('express');
+const https = require('https');
+const http = require('http');
+const fs = require('fs');
+
+const options = {
+  key: fs.readFileSync('/etc/letsencrypt/live/tnpartners.net/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/tnpartners.net/fullchain.pem')
+};
+
+const app = express();
+http.createServer(app).listen(80);
+https.createServer(options, app).listen(443, () => {}); 
+app.get("*", (req, res) => {
+    if(req.secure){
+        // --- https
+    }else{
+        // -- http
+        return res.redirect("https://" + req.headers.host + req.url);
+    }
+})
+####
+
+    sudo npm install -g pm2@latest: install pm2 globally across packages
+    npm ls / npm ls -g
+    sudo pm2 start index.js -i max: cluster mode which uses max available CPUs (vs fork mode using only one CPU) 
+    sudo pm2 status
+    sudo pm2 stop / restart / delete id
+    sudo pm2 logs (--lines 200)
+    sudo pm2 monit 
+    sudo pm2 start <script|name|id> --watch
+    sudo pm2 start <script|name|id> --watch --ignore-watch "node_modules"
+    refer to pm2 quick start guide in the web
+        
+
 
