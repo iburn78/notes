@@ -138,6 +138,11 @@
        is - in sentence, as - a sentence
        i" - in "", a" - a ""
        i[, i(, a[, a( etc...
+    split of windows
+    :vsp 
+    :sp 
+    ctrl+w, hjkl -> movements among the screens
+    :!python % -> execute the current file in python
 - Vim marks 
     mc: mark current position with mark in a...Z
     'c: go to mark in current file
