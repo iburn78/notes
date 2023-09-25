@@ -29,6 +29,7 @@
     sudo service apache2 reload (probably the same command)
     sudo systemctl reload apache2 (probably the same command)
 - HTTPS setup
+    * certbot is only require for Apache or Nginx, no need for Nodejs
     sudo apt-get install snapd
     sudo snap install core; sudo snap refresh core
     sudo snap install --classic certbot
