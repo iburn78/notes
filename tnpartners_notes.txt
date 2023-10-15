@@ -29,7 +29,6 @@
     sudo service apache2 reload (probably the same command)
     sudo systemctl reload apache2 (probably the same command)
 - HTTPS setup
-    * certbot is only require for Apache or Nginx, no need for Nodejs
     sudo apt-get install snapd
     sudo snap install core; sudo snap refresh core
     sudo snap install --classic certbot
@@ -47,6 +46,29 @@
 	sudo crontab -l (shows the cron list)
 	sudo crontab -e are scheduled with root's credentials while crontab -e are scheduled with logged-in user
     (for django apache setting with https, see below)
+
+
+    ***** Regarding NodeJS *****
+    * certbot is required for Apache or Nginx, and Nodejs too!
+    * if certbot is activated for Apache, then it works for Nodejs too... so follow the following steps
+    * register or renew certbot under Apache server (Apache server has to be activated when first to register certbot, but when to renew certbot, Apache doesn't need to be activated; however, Apache will be automatically activated after renew of certbot
+    * sequence of actions
+        - sudo pm2 stop 0 <process id>
+        - sudo service apache2 start
+        - sudo certbot --apache
+        or 
+        - sudo certbot renew --quiet
+        - sudo service apache2 stop
+        - sudo pm2 start 0 <process id>
+    * CRON (redefined)
+        sudo crontab -e
+        add: 
+        30 4 1 * * sudo pm2 stop 0 
+        32 4 1 * * sudo service apache2 start
+        34 4 1 * * sudo certbot renew --quiet
+        36 4 1 * * sudo service apache2 stop
+        38 4 1 * * sudo pm2 start 0
+
 - .bashrc / .vimrc (copied from issuetracker.info)
 - hostnamectl / sudo hostname tnpartners-net
 - installed dos2unix, tree
