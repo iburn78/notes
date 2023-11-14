@@ -387,3 +387,21 @@ db.all(sql, [], (err, rows) => {
 ####
 - refer to video: https://www.youtube.com/watch?v=mnH_1YGR2PM
   for EXPRESS and SQLITE3
+
+
+####
+Increasing EBS volume size in AWS
+
+- Step 1: Take Snapshot of EBS Volume (not a mandatory)
+          In EC2 console, there is a volumes page under EBS section, and you can take action of taking a snapshot in that page
+- Step 2: Increase EBS volume size in AWS console
+          In the same volumes page, you can increase EBS volume (you can only increase, not to decrease)
+- Step 3: Extend Linux file syste after resizing a volume
+          1) df -hT
+          2) sudo lsblk 
+             - check the sname of partition: if it is xvda and there is one disk...
+          3) sudo growpart /dev/xvda 1 
+          4) Extend the file system on /:
+             - if XFS file system: sudo xfx_growfs -d / 
+             - if EXT4 file system: sudo resize2fs /dev/root (need to check the device name of / using df -hT)
+
