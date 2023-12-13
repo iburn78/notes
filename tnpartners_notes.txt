@@ -405,3 +405,8 @@ Increasing EBS volume size in AWS
              - if XFS file system: sudo xfx_growfs -d / 
              - if EXT4 file system: sudo resize2fs /dev/root (need to check the device name of / using df -hT)
 
+#### 
+sudo crontab -e
+0 23 * * * sudo rtcwake -m freeze -l -t $(date -d 'tomorrow 08:00' +%s)
+=> set the linux system to go into sleep at 11pm and wake up at 8am everyday
+
