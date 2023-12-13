@@ -407,6 +407,6 @@ Increasing EBS volume size in AWS
 
 #### 
 sudo crontab -e
-0 23 * * * sudo rtcwake -m freeze -l -t $(date -d 'tomorrow 08:00' +%s)
+o 23 * * * sudo rtcwake -m mem -l --date +540min
 => set the linux system to go into sleep at 11pm and wake up at 8am everyday
 
