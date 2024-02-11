@@ -399,7 +399,7 @@ Increasing EBS volume size in AWS
 - Step 3: Extend Linux file syste after resizing a volume
           1) df -hT
           2) sudo lsblk 
-             - check the sname of partition: if it is xvda and there is one disk...
+             - check the name of partition: if it is xvda and there is one disk...
           3) sudo growpart /dev/xvda 1 
           4) Extend the file system on /:
              - if XFS file system: sudo xfx_growfs -d / 
