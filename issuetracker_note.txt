@@ -209,6 +209,12 @@
         fi
         git push
     }
+- git reconcile conflict between two local locations: e.g., keeping latest files from both locations
+    git fetch origin
+    git merge origin/main
+    git add -A
+    git commit -m "wip"
+    git push
 - Virtualenv 
     * note that virtualenv uses already system-installed python (which is the first one to be found in the system)
         - python has to be pre-installed
