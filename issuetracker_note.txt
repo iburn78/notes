@@ -220,7 +220,7 @@
     git push
   in a case that I want to keep local file, then should go through resolve conflict: 
     git add [file_that_I_want_to_keep] (although it is not the latest)
-    git merge --continue
+    git merge --continue # this is effectively the same as 'git commit' in this context
     git commit -m 'wip'
     git push
 - git remove .gitignore cache
