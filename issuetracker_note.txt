@@ -212,6 +212,9 @@
 - git reconcile conflict between two local locations: e.g., keeping latest files from both locations
     git fetch origin
     git merge origin/main
+    git checkout --ours path/to/binaryfile 
+    or 
+    git checkout --theirs path/to/binaryfile 
     git add -A
     git commit -m "wip"
     git push
