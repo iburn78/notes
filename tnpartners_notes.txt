@@ -23,7 +23,8 @@
     (sudo ufw allow 8000 <-> sudo ufw delete allow 8000)
 - Apache2 setting at EC2
     sudo apt-get install apache2
-    sudo vim /etc/apache2/sites-available/000-default.conf                                                                                        ServerName issuetracker.info (uncomment the line)
+    sudo vim /etc/apache2/sites-available/000-default.conf
+    ServerName issuetracker.info (uncomment the line)
     sudo a2ensite 000-default.conf
     sudo service apache2 restart
     sudo service apache2 reload (probably the same command)
@@ -68,6 +69,9 @@
         34 4 1 * * sudo certbot renew --quiet
         36 4 1 * * sudo service apache2 stop
         38 4 1 * * sudo pm2 start 0
+
+    ***** NodeJS: new approach *****
+        The above approach might be outdated. I am trying direct method for Nodejs and certbot...
 
 - .bashrc / .vimrc (copied from issuetracker.info)
 - hostnamectl / sudo hostname tnpartners-net
